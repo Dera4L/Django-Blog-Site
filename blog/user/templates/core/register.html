@@ -1,0 +1,55 @@
+{% extends "core/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<div class="w-1/2 my-6 mx-auto p-6 bg-gray-100 rounded-xl">
+    <h1 class="mb-6 text-3xl">Sign up</h1>
+
+    {% if user.is_authenticated %}
+        <p>You are already logged in as {{ user.username }}</p>
+        <p>If you are not redirected , <a href="#">click here</a></p>
+
+        {% comment %} <a class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white" href="{% url "core:dashboard" %}">Dasboard</a>
+        <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Dashboard</button> {% endcomment %}
+
+    {% else %}
+    
+        <form method="post" action=".">
+        {% csrf_token %}
+        
+
+        <div class="mb-3">
+            <label class="inline-block mb-2">Username</label><br>
+            {{ form.username }}
+        </div>
+
+        
+
+        <div class="mb-3">
+            <label class="inline-block mb-2">password1</label><br>
+            {{ form.password1 }}
+        </div>
+
+        <div class="mb-3">
+            <label class="inline-block mb-2">Repeat Password</label><br>
+            {{ form.password2 }}
+        </div>
+
+        {% if form.errors or form.non_field_errors %}
+            <div class="mb-3 p06 bg-red-100 rounded-xl">
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+        <u><ul><a href="#">Already have an account</a></ul></u>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock body %}
+
