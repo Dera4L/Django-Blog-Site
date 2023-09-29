@@ -13,7 +13,10 @@ class RegisterForm(forms.Form):
         'class' : 'w-full py-4 px-6 rounded-xl'
     }))
 
-    
+    email =  forms.CharField(widget=forms.EmailInput(attrs={
+        'placeholder': 'Email',
+        'class' : 'w-full py-4 px-6 rounded-xl'
+    }))
 
     password1 =  forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Password',
@@ -26,6 +29,7 @@ class RegisterForm(forms.Form):
     
     def clean(self):
         username = self.cleaned_data.get("username")
+        email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
         confirm = self.cleaned_data.get("confirm")
 
@@ -34,8 +38,20 @@ class RegisterForm(forms.Form):
 
         values = {
             "username" : username,
-            "password" : password
+            "password" : password,
+            "email" : email,
         }
         return values
+
+class LoginForm(forms.Form):
+    username =  forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Username',
+        'class' : 'w-full py-4 px-6 rounded-xl'
+    }))
+
+    password =  forms.CharField(widget=forms.PasswordInput(attrs={
+        'placeholder': 'Password',
+        'class' : 'w-full py-4 px-6 rounded-xl'
+    }))
     
     
