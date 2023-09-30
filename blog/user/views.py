@@ -46,7 +46,9 @@ def loginUser(request):
             if user is None:
                 messages.info(request,"Your username and password don't match")
                 return render(request,'core/login.html', context)
-            messages.info(request, "You've succesfully Logged in")
+            # messages.info(request, "You've succesfully Logged in as"user.username)
+            messages.info(request,f"You have succesfully Logged in as {user.username}")
+            
             login(request, user)
             return redirect('/')
     else:
