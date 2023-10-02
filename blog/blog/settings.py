@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'core',
     'user',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,11 @@ SESSION_EXPIRE_SECONDS = 1800
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 SESSION_TIMEOUT_REDIRECT = '/login/' # Add your URL
 SESSION_EXPIRE_AT_BROWSER_CLOSE=True
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "removePlugins": "stylesheetparser",
+        "allowedContent" : True,
+        "width" : "100%",
+    }
+}
