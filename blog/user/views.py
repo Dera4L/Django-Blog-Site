@@ -50,7 +50,7 @@ def loginUser(request):
             messages.info(request,f"You have succesfully Logged in as {user.username}")
             
             login(request, user)
-            return redirect('index')
+            return redirect('/article/dashboard/')
     else:
         form = LoginForm()
         
@@ -60,7 +60,8 @@ def loginUser(request):
 # def index(request):
 #     return render(request,"core/index.html")
     
-    
-
-
-
+@login_required
+def logoutUser(request):
+    logout(request)
+    messages.success(request, "You have been logged out")
+    return redirect("/login/")
