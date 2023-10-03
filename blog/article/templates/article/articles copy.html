@@ -1,5 +1,4 @@
-{% extends "article/layout.html" %}
-
+{% extends "layout.html" %}
 
 {% block body %}
 
@@ -41,13 +40,13 @@
       <!-- Author -->
       <p class="lead">
         
-        Published By <strong>{{article.author.username}}</strong>
+        {{article.author.username}} tarafından yayınlandı
       </p>
 
       <hr>
 
       <!-- Date/Time -->
-      <p>{{article.creation_date}}</p>
+      <p>{{article.created_date}}</p>
       <hr>
       <!-- Preview Image -->
       {% if article.article_image %}

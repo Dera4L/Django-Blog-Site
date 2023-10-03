@@ -24,7 +24,7 @@ def register(request):
         login(request,newUser)
         messages.info(request,"You have successfully registered...")
 
-        return redirect("/register/")
+        return redirect("/login/")
     context = {
             "form" : form
         }
@@ -50,15 +50,15 @@ def loginUser(request):
             messages.info(request,f"You have succesfully Logged in as {user.username}")
             
             login(request, user)
-            return redirect('/')
+            return redirect('index')
     else:
         form = LoginForm()
         
         return render(request, "core/login.html",context)
  
-@login_required
-def index(request):
-    return render(request,"core/index.html")
+# @login_required
+# def index(request):
+#     return render(request,"core/index.html")
     
     
 

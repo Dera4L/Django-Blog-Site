@@ -1,0 +1,16 @@
+{% extends 'article/layout.html' %}
+
+{% block body %}
+
+
+
+<h1>WELCOME TO THE BLOG<h1>
+{% if request.user.is_authenticated %}
+    <h1>
+        How do you like the Blog
+    </h1>
+{% else %}
+
+{% endif %}
+
+{% endblock %}

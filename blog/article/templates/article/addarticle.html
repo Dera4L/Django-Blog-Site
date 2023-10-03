@@ -1,0 +1,37 @@
+{% extends "article/layout.html" %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Makale Oluştur</h3>
+        <hr>
+        <form method = "post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+                
+    
+                <div class="mb-3">
+                    <label class="inline-block mb-2">Title</label><br>
+                    {{ form.title }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="inline-block mb-2">Content</label><br>
+                    {{ form.content }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="inline-block mb-2">Image</label><br>
+                    {{ form.article_image }}
+                </div>
+    
+                
+    
+            <button type = "submit" class = "btn btn-danger">Makale Ekle</button>
+        </form>
+    </div>
+  </div>
+
+
+{% endblock body %}
